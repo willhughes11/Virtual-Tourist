@@ -28,7 +28,7 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
     
     var fetchedResultsController:NSFetchedResultsController<Photo>!
     
-    let numberOfCellsPerRow: CGFloat = 3
+    let numberOfCellsPerRow: CGFloat = 4
     
     //MARK: - Fileprivate Functions
     

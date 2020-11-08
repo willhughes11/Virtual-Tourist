@@ -10,13 +10,16 @@ import UIKit
 
 class FlickrClient {
     
+    //MARK: - API Keys and Stuff
+    
     struct Auth {
         static let key: String = "4ea541a27f4e15a10ab6933083952dd2"
         static let secret: String = "6239b28305017601"
     }
     
+    // MARK: - Endpoints
+    
     enum Endpoints {
-        
         case photosSearch([Float])
         case loadImage([String:String], Int)
         
@@ -32,6 +35,7 @@ class FlickrClient {
         }
     }
     
+    // MARK: - Image Request
     
     static func getPhotosSearch(latitude: Double, longitude: Double, completion: @escaping (FlickrResponse?, Error?) -> Void){
         let request = URLRequest(url: Endpoints.photosSearch([Float(latitude),Float(longitude)]).url)
@@ -42,7 +46,6 @@ class FlickrClient {
                 }
                 return
             }
-            // remove extra characters from the begininng to be able to parse response
             data = data.subdata(in: (14..<(data.count-1)))
             let decoder = JSONDecoder()
             do{
@@ -58,6 +61,8 @@ class FlickrClient {
         }
         task.resume()
     }
+    
+    // MARK: - Image Download
     
     static func loadImage(photoData: FlickrPhotoData, image: Photo, completion: @escaping (Photo, Data?, Error?)->Void){
         let request = URLRequest(url: Endpoints.loadImage(
