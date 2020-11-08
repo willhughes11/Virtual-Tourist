@@ -55,6 +55,7 @@ extension PhotoAlbumViewController: MKMapViewDelegate, UICollectionViewDataSourc
     
     
     //MARK: - Collection Views
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
        return fetchedResultsController.sections?.count ?? 1
    }

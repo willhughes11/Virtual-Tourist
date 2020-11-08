@@ -10,6 +10,8 @@ import MapKit
 
 extension TravelLocationsViewController: MKMapViewDelegate {
     
+    //MARK: - Map Views
+    
     func setupMap(){
         var annotations = [AnnotationView]()
         

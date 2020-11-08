@@ -12,14 +12,10 @@ import CoreData
 class TravelLocationsViewController: UIViewController, NSFetchedResultsControllerDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
-    
     var dataController: DataController!
-    
     var fetchedResultsController: NSFetchedResultsController<Pin>!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    //MARK: - Fileprivate Functions
     
     fileprivate func setupFetchResultsController(){
         let fetchRequest: NSFetchRequest<Pin> = Pin.fetchRequest()
@@ -33,6 +29,12 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
         } catch {
             fatalError("Fetch cold not be performed: \(error.localizedDescription)")
         }
+    }
+    
+    //MARK: - Override Functions
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,12 +51,14 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
         fetchedResultsController = nil
     }
     
+    //MARK: - Gestures
+    
     func gestureRecognition(){
         let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(TravelLocationsViewController.handleLongPress(_:)))
         longPressRecogniser.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPressRecogniser)
     }
-    
+
     @objc func handleLongPress(_ gestureRecognizer: UIGestureRecognizer){
         if gestureRecognizer.state != .began {return}
         
