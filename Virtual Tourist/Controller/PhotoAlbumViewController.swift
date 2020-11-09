@@ -94,7 +94,6 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.reloadData()
-        loadFlickrImages()
         setUpCollection()
         setUpMap()
     }

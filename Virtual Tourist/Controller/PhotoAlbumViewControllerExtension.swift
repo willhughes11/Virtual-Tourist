@@ -33,17 +33,10 @@ extension PhotoAlbumViewController: MKMapViewDelegate, UICollectionViewDataSourc
     }
     
     func showActivity(_ state:Bool){
-        if state {
-            activityIndicator.startAnimating()
-            activityIndicator.isHidden = false
-            navigationController?.toolbar.isUserInteractionEnabled = false
-            navigationController?.navigationBar.isUserInteractionEnabled = false
-        }else{
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-            navigationController?.toolbar.isUserInteractionEnabled = true
-            navigationController?.navigationBar.isUserInteractionEnabled = true
-        }
+        state ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        activityIndicator.isHidden = !state
+        navigationController?.toolbar.isUserInteractionEnabled = !state
+        navigationController?.navigationBar.isUserInteractionEnabled = !state
     }
 
     func showError(title: String, message: String){
