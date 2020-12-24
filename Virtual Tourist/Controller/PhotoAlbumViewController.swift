@@ -134,7 +134,7 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
     func handleFlickrImagesSearchResponse(response: FlickrResponse?, error: Error?){
         guard error == nil , response != nil else {
             showActivity(false)
-            showError(title: "Error1", message: error?.localizedDescription ?? "try again later")
+            showError(title: "Error", message: error?.localizedDescription ?? "try again later")
             return
         }
         
